@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "test backend for a project",
   "main": "index.js",
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "lint": "ts-standard",
