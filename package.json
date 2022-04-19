@@ -9,8 +9,9 @@
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "lint": "ts-standard",
-    "start": "nodemon build/index.js",
-    "build": "tsc -w",
+    "start": "build/index.js",
+    "nodemon": "nodemon build/index.js",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "deltaquery",
