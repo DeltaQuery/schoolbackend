@@ -7,17 +7,23 @@ export enum Grado_alumno {
     Grado3er = "3er Grado",
     Grado4to = "4to Grado",
     Grado5to = "5to Grado",
-    Grado6to = "6to Grado"
+    Grado6to = "6to Grado" 
 }
 export enum Nivel_alumno {
+    Preescolar = "Preescolar",
     Basica = "Básica",
-    Primaria = "Primaria"
+    Bachillerato = "Bachillerato"
 }
 export enum Tipo_id {
     V = "V",
-    E = "E"
+    E = "E",
+    J = "J",
+    G = "G"
 }
-
+export enum Role {
+    Admin = "admin",
+    Employee = "employee"
+}
 export interface Student {
     ID_ALUMNO?: number;
     NOMBRES_ALUMNO: string;

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Tipo_id = exports.Nivel_alumno = exports.Grado_alumno = void 0;
+exports.Role = exports.Tipo_id = exports.Nivel_alumno = exports.Grado_alumno = void 0;
 var Grado_alumno;
 (function (Grado_alumno) {
     Grado_alumno["Sala3"] = "Sala de 3";
@@ -15,11 +15,19 @@ var Grado_alumno;
 })(Grado_alumno = exports.Grado_alumno || (exports.Grado_alumno = {}));
 var Nivel_alumno;
 (function (Nivel_alumno) {
+    Nivel_alumno["Preescolar"] = "Preescolar";
     Nivel_alumno["Basica"] = "B\u00E1sica";
-    Nivel_alumno["Primaria"] = "Primaria";
+    Nivel_alumno["Bachillerato"] = "Bachillerato";
 })(Nivel_alumno = exports.Nivel_alumno || (exports.Nivel_alumno = {}));
 var Tipo_id;
 (function (Tipo_id) {
     Tipo_id["V"] = "V";
     Tipo_id["E"] = "E";
+    Tipo_id["J"] = "J";
+    Tipo_id["G"] = "G";
 })(Tipo_id = exports.Tipo_id || (exports.Tipo_id = {}));
+var Role;
+(function (Role) {
+    Role["Admin"] = "admin";
+    Role["Employee"] = "employee";
+})(Role = exports.Role || (exports.Role = {}));

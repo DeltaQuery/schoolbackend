@@ -1,18 +1,43 @@
-import express from "express"
-import studentRouter from "./routes/students"
+import express from 'express';
+import mongoose from 'mongoose';
+require('dotenv').config();
 
-const app = express()
-app.use(express.json()) //middleware que transforma la req.body a un json
+// Routes
+import StudentRoutes from './routes/students';
+import CustomerRoutes from "./routes/customers";
+import ProductRoutes from "./routes/products";
+import InvoiceRoutes from "./routes/invoices";
+import UserRoutes from "./routes/users";
+import MainRoutes from "./routes/main";
 
-const PORT = process.env.PORT  || 8000
+// Initializations
+const app = express();
 
-app.get("/ping", (_req, res) => {
-    console.log("ping!!!")
-    res.send("pong")
-})
+// settings
+app.set('port', process.env.PORT || 8000);
+
+// middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+//app.use(methodOverride());
+
+// Routes       
+  
+//mongodb        
+mongoose.connect(`mongodb+srv://carlos:carlos1994@cluster0.u08yi.mongodb.net/school-backend?retryWrites=true&w=majority`,(err)=>{
+if(err) throw err;       
+console.log("MongoDB Connected Successfully");
+}) 
  
-app.use("/api/students", studentRouter)
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`) 
-})  
+//routes  
+app.use("/api", MainRoutes); 
+app.use('/api/customers', CustomerRoutes); 
+app.use('/api/students', StudentRoutes); 
+app.use('/api/products', ProductRoutes);  
+app.use('/api/invoices', InvoiceRoutes);    
+app.use('/api/users', UserRoutes);   
+  
+// Starting the Server
+app.listen(app.get('port'), () => {
+    console.log(`Server on port`, app.get('port'));  
+});   

@@ -1,33 +1,22 @@
-import express from "express";
-import * as studentsController from "../controllers/studentsController"
-import toNewStudent from "../utils";
+import { Router } from 'express'
+import { studentController } from "../controllers/studentController"
 
-const router = express.Router()
+class StudentRoutes {
 
-router.get("/", (_req,res) => {
-    res.send(studentsController.getStudents())
-})
+    public router: Router = Router()
 
-router.get("/:id", (req,res) => {
-    const student = studentsController.findById(+req.params.id)
-
-    return (student != null)
-    ? res.send(student)
-    : res.sendStatus(404)
-})
-
-router.post("/", (req, res) => {
-    try {
-        const { NOMBRES_ALUMNO, APELLIDOS_ALUMNO, GRADO_ALUMNO } = req.body;
-
-        const student = toNewStudent(req.body)
-
-        const addedStudent = studentsController.addStudent(student)
-    
-        res.json(addedStudent)
-    } catch (e: any) {
-        res.status(400).send(e.message)
+    constructor() {
+        this.config()
+    } 
+ 
+    config(): void {
+        this.router.get('/', studentController.getStudents)
+        this.router.get("/:id", studentController.findById)
+        this.router.post("/", studentController.addStudent)
+        this.router.patch("/:id", studentController.updateStudent)
+        this.router.delete("/:id", studentController.deleteStudent)
     }
-})
+}
 
-export default router 
+const studentRoutes = new StudentRoutes()      
+export default studentRoutes.router       
