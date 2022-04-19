@@ -11,10 +11,13 @@ import UserRoutes from "./routes/users";
 import MainRoutes from "./routes/main";
 
 // Initializations
+const cors = require('cors');
 const app = express();
+app.use(cors());
 
 // settings
 app.set('port', process.env.PORT || 8000);
+app.use(cors());
 
 // middlewares
 app.use(express.json());
