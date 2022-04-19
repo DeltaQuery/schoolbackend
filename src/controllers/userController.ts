@@ -1,7 +1,6 @@
 const userModel = require("../models/User");
 import { Request, Response } from "express";
 import * as jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
 
 class UserController {
 
