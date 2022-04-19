@@ -14,9 +14,12 @@ const invoices_1 = __importDefault(require("./routes/invoices"));
 const users_1 = __importDefault(require("./routes/users"));
 const main_1 = __importDefault(require("./routes/main"));
 // Initializations
+const cors = require('cors');
 const app = (0, express_1.default)();
+app.use(cors());
 // settings
 app.set('port', process.env.PORT || 8000);
+app.use(cors());
 // middlewares
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
